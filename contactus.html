@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Mokojin Cafe</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 0;
+            background-image: url('images/contact-bg.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .header {
+            background-color: #8B4513;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .header img {
+            width: 200px;
+            height: auto;
+        }
+        .nav {
+            text-align: center;
+            background-color: #D2B48C;
+            padding: 10px 0;
+        }
+        .nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            font-weight: bold;
+            padding: 10px;
+            transition: background 0.3s;
+        }
+        .nav a.active {
+            background-color: white;
+            color: black;
+            border-radius: 5px;
+            padding: 10px;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 90vh;
+            padding: 20px;
+        }
+        .contact-form {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+        }
+        .contact-form h2 {
+            text-align: center;
+            color: #8B4513;
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+            color: #5a3e2b;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        input[type="radio"], input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+        }
+        .form-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #8B4513;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #654321;
+        }
+        #response {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: #f0f0f0;
+            border-left: 5px solid #8B4513;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        #response h3 {
+            color: #8B4513;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const currentLocation = window.location.href;
+            const navLinks = document.querySelectorAll(".nav a");
+            navLinks.forEach(link => {
+                if (link.href === currentLocation) {
+                    link.classList.add("active");
+                }
+            });
+        });
+
+        function handleSubmit(event) {
+            event.preventDefault();
+
+         
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const contactMethod = document.querySelector('input[name="contactMethod"]:checked').value;
+            const subscribe = document.querySelector('input[name="subscribe"]:checked') ? "Yes" : "No";
+            const message = document.getElementById('message').value;
+
+           
+            const responseDiv = document.getElementById('response');
+            responseDiv.innerHTML = `
+                <h3>Message Received!</h3>
+                <p><strong>Name:</strong> ${name}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Phone:</strong> ${phone}</p>
+                <p><strong>Contact Method:</strong> ${contactMethod}</p>
+                <p><strong>Subscribe:</strong> ${subscribe}</p>
+                <p><strong>Message:</strong> ${message}</p>
+            `;
+            responseDiv.style.display = 'block';
+
+       
+            document.getElementById('contactForm').reset();
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <img src="images/webdev-removebg-preview.png" alt="Header Logo">
+</div>
+
+<div class="nav">
+    <a href="home.html">HOME</a>
+    <a href="viewmenu.html">VIEW MENU</a>
+    <a href="aboutus.html">ABOUT US</a>
+    <a href="contactus.html">CONTACT US</a>
+</div>
+
+<div class="container">
+    <div class="contact-form">
+        <h2>Contact Us</h2>
+        <form id="contactForm" onsubmit="handleSubmit(event)" autocomplete="off"> 
+            
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name" required autocomplete="off">
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required autocomplete="off">
+
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" autocomplete="off">
+
+            <label>Preferred Contact Method:</label>
+            <input type="radio" id="emailContact" name="contactMethod" value="Email" checked>
+            <label for="emailContact">Email</label>
+            <input type="radio" id="phoneContact" name="contactMethod" value="Phone">
+            <label for="phoneContact">Phone</label>
+
+            <label>
+                <input type="checkbox" name="subscribe" value="yes"> Subscribe to updates
+            </label>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" placeholder="Enter your message" required autocomplete="off"></textarea>
+
+            <div class="form-buttons">
+                <button type="submit">Submit</button>
+                <button type="reset">Reset</button>
+            </div>
+        </form>
+
+
+        <div id="response"></div>
+    </div>
+</div>
+
+</body>
+</html>

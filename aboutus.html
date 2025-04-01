@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Mokojin Cafe</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 0;
+            background-image: url('images/jk1QqU.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .header {
+            background-color: #8B4513;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .header img {
+            width: 200px;
+            height: auto;
+        }
+        .nav {
+            text-align: center;
+            background-color: #D2B48C;
+            padding: 10px 0;
+        }
+        .nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            font-weight: bold;
+            padding: 10px;
+        }
+        .nav a.active {
+            background-color: white;
+            color: black;
+            border-radius: 5px;
+            padding: 10px;
+        }
+        .content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 80vh;
+            padding: 20px;
+        }
+        .content-box {
+            background-color: hsla(27, 52%, 52%, 0.93);
+            color: white;
+            padding: 40px;
+            border-radius: 8px;
+            max-width: 800px;
+            text-align: center;
+            font-size: 18px;
+            line-height: 1.6;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .content-box p {
+            font-family: 'Arial', sans-serif;
+            font-size: 22px;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const currentLocation = window.location.href;
+            const navLinks = document.querySelectorAll(".nav a");
+            navLinks.forEach(link => {
+                if (link.href === currentLocation) {
+                    link.classList.add("active");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="header">
+        <img src="images/webdev-removebg-preview.png" alt="Header Logo">
+    </div>
+
+    <div class="nav">
+        <a href="home.html">HOME</a>
+        <a href="viewmenu.html">VIEW MENU</a>
+        <a href="aboutus.html">ABOUT US</a>
+        <a href="contactus.html">CONTACT US</a> 
+    </div>
+
+    <div class="content">
+        <div class="content-box">
+            <p>"The Mokojin Cafe Coffee Shop, we are dedicated to serving ethically sourced, high-quality coffee in a cozy and welcoming space. Since 2018, we have been crafting exceptional brews that bring people together for work, relaxation, or meaningful conversations. Experience the perfect blend of flavor and comfort with every sip."</p>
+        </div>
+    </div>
+</body>
+</html>
